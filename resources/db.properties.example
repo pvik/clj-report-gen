@@ -1,0 +1,5 @@
+dbtype=mssql
+dbname=WHD
+host=100.66.34.103
+user=whdadmin
+password=pass

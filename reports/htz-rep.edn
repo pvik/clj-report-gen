@@ -1,0 +1,6 @@
+{:name "Hertz Weekly Report",
+ :distribute
+ [{:type :email, :to "praveen.vikram@centurylink.com"}],
+ :sql
+ {:query "select * from htztrsct;"}}
+
