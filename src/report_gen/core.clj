@@ -24,7 +24,8 @@
         (println banner)
         (System/exit 0))
       (let [report-name (:report opts)
-            report-props (helpers/read-report report-name)
-            report-data (sql/run-report report-props)
+            data-dir (:data-dir opts)
+            report-props (helpers/read-report report-name data-dir)
+            report-data (sql/run-report report-props data-dir)
             db-props "props"]
         (log/info db-props)))))
