@@ -8,4 +8,4 @@
   (log/logf :info "Running report: %s" (:name report-props))
   (let [db-props (read-db (:db report-props) data-dir)]
     (log/info db-props)
-    jdbc/query db-props [(:query report-props)]))
+    (jdbc/query db-props [(:query report-props)])))
