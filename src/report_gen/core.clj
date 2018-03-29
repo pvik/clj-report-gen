@@ -1,9 +1,9 @@
 (ns report-gen.core
   (:gen-class)
-  (:require [propertea.core :refer (read-properties)]
+  (:require [report-gen.helpers :as helpers :refer [read-report]]
+            [report-gen.sql :as sql :refer [run-report]]
             [clojure.tools.logging :as log]
-            [clojure.tools.cli :refer [cli]]
-            [clojure.java.jdbc :as jdbc]))
+            [clojure.tools.cli :refer [cli]]))
 
 (defn -main
   "report-gen application entry point"
@@ -11,8 +11,8 @@
   (let [[opts args banner] (cli args
                                 ["-h" "--help" "Print this help"
                                  :default false :flag true]
-                                ["-d" "--db-props"  "Database properties file"
-                                 :default "resources/db.properties"]
+                                ["-d" "--data-dir"  "data directory to find report and db .edn files"
+                                 :default "resources"]
                                 ["-r" "--report" "Report .edn file"])]
     (when (:help opts)
       (println banner)
@@ -23,11 +23,8 @@
         (log/error "No Report file specified")
         (println banner)
         (System/exit 0))
-      (let [report (read-string (slurp (:report opts)))
-            db-props (read-properties (:db-props opts))]
-        (log/logf :info "Running report: %s" (:name report))
-        (log/info report)
+      (let [report-name (:report opts)
+            report-props (helpers/read-report report-name)
+            report-data (sql/run-report report-props)
+            db-props "props"]
         (log/info db-props)))))
-
-(defn run-query [db-props sql]
-  (let [db {:dbtype }]))

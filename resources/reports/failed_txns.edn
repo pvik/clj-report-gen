@@ -1,0 +1,3 @@
+{:name  "FailedTransactions"
+ :db    "pg"
+ :query "SELECT * FROM transactions WHERE asynchronousresponseid = -1"}
