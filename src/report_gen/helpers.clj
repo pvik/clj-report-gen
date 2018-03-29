@@ -5,12 +5,14 @@
 (defn read-edn [edn-file]
   (read-string (slurp edn-file)))
 
-(defn read-db [db-name & dir]
-  (let [db-props-file (str (if (nil? dir) "resources" dir) "/databases/" db-name ".edn")]
+(defn read-db [db-name & extr-params]
+  (let [dir (first extr-params)
+        db-props-file (str dir "/databases/" db-name ".edn")]
     (log/info "reading db file" db-props-file)
     (read-edn db-props-file)))
 
-(defn read-report [report-name & dir]
-  (let [report-props-file (str (if (nil? dir) "resources" dir) "/reports/" report-name ".edn")]
+(defn read-report [report-name & extr-params]
+  (let [dir (first extr-params)
+        report-props-file (str dir "/reports/" report-name ".edn")]
     (log/info "reading report file" report-props-file)
     (read-edn report-props-file)))
