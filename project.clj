@@ -16,6 +16,6 @@
                  [org.postgresql/postgresql "42.2.2"]
                  ;; [com.oracle/ojdbc6 "11.2.0.3"]
                  [com.oracle/ojdbc14 "10.2.0.4.0"]]
-  :Main ^:skip-aot report-gen.core
+  :main ^:skip-aot report-gen.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
