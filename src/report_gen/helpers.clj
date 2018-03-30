@@ -23,7 +23,7 @@
     (read-edn report-props-file)))
 
 (defn map-vals-to-vec-ord-by-keys [m]
-  (reduce #(conj % (second %2)) [] (sort m)))
+  (reduce #(conj % (str (second %2))) [] (sort m)))
 
 (defn seq-map-to-2d-vec [data-seq]
   (let [ks (vec (sort (keys (first data-seq))))
