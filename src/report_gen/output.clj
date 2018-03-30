@@ -1,8 +1,11 @@
 (ns report-gen.output
   (:gen-class)
-  (:require [report-gen.helpers :as helpers :refer [date-time-formatter seq-map-to-2d-vec]]
+  (:require [report-gen.helpers :as helpers :refer [seq-map-to-2d-vec gen-file-name]]
+            [dk.ative.docjure.spreadsheet :as docjure]
             [clojure.tools.logging :as log]))
 
-(defn save-xlsx [data-2d-vec report-name & report-dir]
-  (let [wb (create-workbook report-name data-2d-vec)]
-    (save-workbook! (str report-name "_" (.format (java.time.LocalDateTime/now) helpers/date-time-formatter) ".xlsx")  wb)))
+(defn save-xlsx [report-name report-data & report-dir]
+  (let [filename (helpers/gen-file-name report-name :xlsx)
+        wb (docjure/create-workbook report-name (helpers/seq-map-to-2d-vec report-data))]
+    (log/info "saving " filename)
+    (docjure/save-workbook! filename wb)))

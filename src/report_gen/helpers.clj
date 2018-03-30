@@ -2,7 +2,8 @@
   (:gen-class)
   (:require [clojure.tools.logging :as log]))
 
-(def date-time-formatter (java.time.format.DateTimeFormatter/ofPattern "yyyy_MM_dd_HHmm"))
+(defn gen-file-name [report-name type]
+  (str report-name "_" (.format (java.time.LocalDateTime/now) helpers/date-time-formatter) "." (name type)))
 
 (defn read-edn [edn-file]
   (read-string (slurp edn-file)))
