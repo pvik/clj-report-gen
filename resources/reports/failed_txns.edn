@@ -4,6 +4,7 @@
  :output :xlsx
  :dispatch [{:type :email
              :to   "user@mycompany.com, user2@othercompany.com"
-             :suject "TEST - %REPORT_NAME% - %DATE%"
+             :from "donotreply@mycompany.com"
+             :suject "App1 - Test Report"
              :body "Please find the requested report attached"}]
  }
