@@ -4,16 +4,18 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
+                 ;; logging
                  [org.clojure/tools.logging "0.4.0"]
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [ch.qos.logback/logback-core "1.2.3"]
                  [org.clojure/tools.cli "0.3.5"] ;; for command line args
                  [dk.ative/docjure "1.12.0"] ;; for xlsx spreadsheets
                  [org.clojure/java.jdbc "0.7.5"]
-                                        ; db classes
+                 ;; db classes
                  [com.microsoft.sqlserver/mssql-jdbc "6.2.2.jre8"]
                  [org.postgresql/postgresql "42.2.2"]
-                 [oracle/ojdbc6 "11.2.0.3"]]
+                 ;; [com.oracle/ojdbc6 "11.2.0.3"]
+                 [com.oracle/ojdbc14 "10.2.0.4.0"]]
   :Main ^:skip-aot report-gen.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
