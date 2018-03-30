@@ -1,3 +1,9 @@
 {:name  "FailedTransactions"
  :db    "pg"
- :query "SELECT * FROM transactions WHERE asynchronousresponseid = -1"}
+ :query "SELECT * FROM transactions WHERE asynchronousresponseid = -1"
+ :output :xlsx
+ :dispatch [{:type :email
+             :to   "user@mycompany.com, user2@othercompany.com"
+             :suject "TEST - %REPORT_NAME% - %DATE%"
+             :body "Please find the requested report attached"}]
+ }
