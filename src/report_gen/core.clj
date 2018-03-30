@@ -3,7 +3,7 @@
   (:require [report-gen.helpers :as helpers :refer [read-report]]
             [report-gen.sql :as sql :refer [run-report]]
             [report-gen.output :as output :refer [save-xlsx]]
-            [report-gen.dispatch :as dispatch :refer [route-dispatch]]
+            [report-gen.dispatch :as dispatch :refer [dispatch-report]]
             [clojure.tools.logging :as log]
             [clojure.tools.cli :refer [cli]]))
 
