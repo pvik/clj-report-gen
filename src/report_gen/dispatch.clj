@@ -19,11 +19,13 @@
     (postal/send-message email-msg)))
 
 (defn route-dispatch [dispatch-props report-props email-server & [report-dir]]
+  (log/info "dispatch-route " dispatch-props)
   (let [dispatch-type (:type dispatch-props)]
     (case dispatch-type
       :email (dispatch-email dispatch-props report-props email-server report-dir)
       (log/error "Invalid dispatch type"))))
 
 (defn dispatch-report [dispatch-props-vec report-props email-server & [report-dir]]
+  (log/info "dispatch " dispatch-props-vec)
   ;; iterate over all dispatch values
   (map #(route-dispatch % report-props email-server report-dir) dispatch-props-vec))
