@@ -2,6 +2,7 @@
   (:gen-class)
   (:require [report-gen.helpers :as helpers :refer [read-report]]
             [report-gen.sql :as sql :refer [run-report]]
+            [report-gen.output :as output :refer [save-xlsx]]
             [clojure.tools.logging :as log]
             [clojure.tools.cli :refer [cli]]))
 
@@ -26,5 +27,10 @@
       (let [report-name (:report opts)
             data-dir (:data-dir opts)
             report-props (helpers/read-report report-name data-dir)
+            report-name (:name report-props)
             report-data (sql/run-report report-props data-dir)]
-        (log/info report-data)))))
+        (log/info "Report Data: " report-data)
+        (case (:output report-props)
+          :xlsx (output/save-xlsx report-name report-data)
+          (log/error "INVALID OUTPUT TYPE"))
+        (log/info "Done!")))))
