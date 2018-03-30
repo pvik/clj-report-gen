@@ -9,6 +9,7 @@
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [ch.qos.logback/logback-core "1.2.3"]
                  [org.clojure/tools.cli "0.3.5"] ;; for command line args
+                 [com.draines/postal "2.0.2"] ;; for email dispatch
                  [dk.ative/docjure "1.12.0"] ;; for xlsx spreadsheets
                  [org.clojure/java.jdbc "0.7.5"]
                  ;; db classes

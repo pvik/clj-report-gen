@@ -17,6 +17,8 @@
                                  :default "resources"]
                                 ["-o" "--output-dir" "directory to store generated reports"
                                  :default "/tmp"]
+                                ["-e" "--email-server" "email server properties"
+                                 :default "resources/email.edn"]
                                 ["-r" "--report" "Report .edn file"])]
     (when (:help opts)
       (println banner)
@@ -30,6 +32,7 @@
       (let [report-name        (:report opts)
             data-dir           (:data-dir opts)
             output-dir         (:output-dir opts)
+            email-server-props (helpers/read-edn (:email-server opts))
             report-props       (helpers/read-report report-name data-dir)
             output-props       (:output report-props)
             dispatch-props-vec (:dispatch report-prpos)
@@ -41,6 +44,6 @@
         (case output-props
           :xlsx (output/save-xlsx report-name report-data output-dir)
           (log/error "INVALID OUTPUT TYPE"))
-        ;; iterate over all dispatch values
-        (map #(dispatch/route-dispatch % output-props) dispatch-props-vec)
+        ;; dispatch report
+        (dispatch/dispatch-report dispatch-props-vec report-props email-server-props output-dir)
         (log/info "Done!")))))
