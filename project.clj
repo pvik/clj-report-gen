@@ -14,8 +14,10 @@
                  ;; db classes
                  [com.microsoft.sqlserver/mssql-jdbc "6.2.2.jre8"]
                  [org.postgresql/postgresql "42.2.2"]
-                 ;; [com.oracle/ojdbc6 "11.2.0.3"]
-                 [com.oracle/ojdbc14 "10.2.0.4.0"]]
+                 [com.oracle/ojdbc6 "12.1.0.1-atlassian-hosted"]
+                 [oracle/ojdbc6 "11.2.0.3"]
+                 ;; [com.oracle/ojdbc14 "10.2.0.4.0"]
+                 ]
   :main ^:skip-aot report-gen.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
