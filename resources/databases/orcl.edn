@@ -1,0 +1,5 @@
+{:dbtype     "oracle:thin"
+ :dbname     "sid"
+ :host       "myorcldb.com"
+ :user       "myuser"
+ :password   "mysecret"}
