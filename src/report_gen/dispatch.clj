@@ -28,4 +28,4 @@
 (defn dispatch-report [dispatch-props-vec report-props email-server & [report-dir]]
   (log/info "dispatch " dispatch-props-vec)
   ;; iterate over all dispatch values
-  (map #(route-dispatch % report-props email-server report-dir) dispatch-props-vec))
+  (log/info (map #(route-dispatch % report-props email-server report-dir) dispatch-props-vec)))
