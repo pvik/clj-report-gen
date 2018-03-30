@@ -12,7 +12,8 @@
                  [org.clojure/java.jdbc "0.7.5"]
                                         ; db classes
                  [com.microsoft.sqlserver/mssql-jdbc "6.2.2.jre8"]
-                 [org.postgresql/postgresql "42.2.2"]]
-  :main ^:skip-aot report-gen.core
+                 [org.postgresql/postgresql "42.2.2"]
+                 [oracle/ojdbc6 "11.2.0.3"]]
+  :Main ^:skip-aot report-gen.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
