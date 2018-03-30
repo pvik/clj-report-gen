@@ -10,12 +10,14 @@
         report-file-name  (str report-dir "/" (helpers/gen-file-name report-name (:output report-props)))
         from (:from email-props)
         to (:to email-props)
+        cc (:cc email-props)
+        bcc (:bcc email-props)
         subject (:subject email-props)
         body [{:type "text/html; charset=utf-8"
                :content (:body email-props)}
               {:type :attachment
                :content (java.io.File. report-file-name)}]
-        email-msg {:from from :to to :subject subject :body body}]
+        email-msg {:from from :to to :cc cc :bcc bcc :subject subject :body body}]
     (postal/send-message email-server email-msg)))
 
 (defn route-dispatch [dispatch-props report-props email-server & [report-dir]]
