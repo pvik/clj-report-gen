@@ -27,5 +27,5 @@
 
 (defn seq-map-to-2d-vec [data-seq]
   (let [ks (vec (sort (keys (first data-seq))))
-        ret-data (reduce #(conj % (name %2)) [] ks)]
+        ret-data [(reduce #(conj % (name %2)) [] ks)]]
     (reduce #(conj % (map-vals-to-vec-ord-by-keys %2)) ret-data data-seq)))
