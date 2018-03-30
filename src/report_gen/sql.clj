@@ -7,5 +7,5 @@
 (defn run-report [report-props data-dir]
   (log/logf :info "Running report: %s" (:name report-props))
   (let [db-props (read-db (:db report-props) data-dir)]
-    (log/info db-props)
+    (log/info (assoc db-props :password "***"))
     (jdbc/query db-props [(:query report-props)])))

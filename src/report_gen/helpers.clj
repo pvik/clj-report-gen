@@ -2,6 +2,8 @@
   (:gen-class)
   (:require [clojure.tools.logging :as log]))
 
+(def date-time-formatter (java.time.format.DateTimeFormatter/ofPattern "yyyy_MM_dd_HHmm"))
+
 (defn read-edn [edn-file]
   (read-string (slurp edn-file)))
 
@@ -16,3 +18,11 @@
         report-props-file (str dir "/reports/" report-name ".edn")]
     (log/info "reading report file" report-props-file)
     (read-edn report-props-file)))
+
+(defn map-vals-to-vec-ord-by-keys [m]
+  (reduce #(conj % (second %2)) [] (sort m)))
+
+(defn seq-map-to-2d-vec [data-seq]
+  (let [ks (vec (sort (keys (first data-seq))))
+        ret-data [ks]]
+    (reduce #(conj % (map-vals-to-vec-ord-by-keys %2)) ret-data data-seq)))

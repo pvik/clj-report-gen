@@ -12,3 +12,5 @@ pom.xml.asc
 /resources/db.properties
 logs
 *.log
+\#*
+.#*

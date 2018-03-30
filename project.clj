@@ -3,15 +3,12 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [
-                 [org.clojure/clojure "1.9.0"]
-
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/tools.logging "0.4.0"]
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [ch.qos.logback/logback-core "1.2.3"]
-
-                 [org.clojure/tools.cli "0.3.5"]
-
+                 [org.clojure/tools.cli "0.3.5"] ;; for command line args
+                 [dk.ative/docjure "1.12.0"] ;; for xlsx spreadsheets
                  [org.clojure/java.jdbc "0.7.5"]
                                         ; db classes
                  [com.microsoft.sqlserver/mssql-jdbc "6.2.2.jre8"]
