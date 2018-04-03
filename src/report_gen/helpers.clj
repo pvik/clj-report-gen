@@ -22,10 +22,10 @@
     (log/info "reading report file" report-props-file)
     (read-edn report-props-file)))
 
-(defn map-vals-to-vec-ord-by-keys [m]
-  (reduce #(conj % (str (second %2))) [] (sort m)))
+(defn map-vals-to-vec-ord-by-keys [m ks]
+  (reduce #(conj % (str (%2 m))) [] ks))
 
-(defn seq-map-to-2d-vec [data-seq]
-  (let [ks (vec (sort (keys (first data-seq))))
+(defn seq-map-to-2d-vec [data-seq & [cols]]
+  (let [ks (if (nil? cols) (vec (sort (keys (first data-seq)))) cols)
         ret-data [(reduce #(conj % (name %2)) [] ks)]]
-    (reduce #(conj % (map-vals-to-vec-ord-by-keys %2)) ret-data data-seq)))
+    (reduce #(conj % (map-vals-to-vec-ord-by-keys %2 ks)) ret-data data-seq)))

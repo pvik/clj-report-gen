@@ -2,7 +2,7 @@
   (:gen-class)
   (:require [report-gen.helpers :as helpers :refer [read-report]]
             [report-gen.sql :as sql :refer [run-report]]
-            [report-gen.output :as output :refer [save-xlsx]]
+            [report-gen.output :as output :refer [gen-output]]
             [report-gen.dispatch :as dispatch :refer [dispatch-report]]
             [clojure.tools.logging :as log]
             [clojure.tools.cli :refer [cli]]))
@@ -41,9 +41,7 @@
             report-data        (sql/run-report report-props data-dir)]
         (log/info "Report Data: " report-data)
         ;; generate output files
-        (case output-props
-          :xlsx (output/save-xlsx report-name report-data output-dir)
-          (log/error "INVALID OUTPUT TYPE"))
+        (gen-output report-name report-data output-props output-dir)
         ;; dispatch report
         (dispatch/dispatch-report dispatch-props-vec report-props email-server-props output-dir)
         (log/info "Done!")))))
