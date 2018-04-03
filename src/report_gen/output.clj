@@ -11,8 +11,8 @@
     (log/info "Saving " filename)
     (save-workbook! filename wb)))
 
-(defn gen-output [report-name report-data output-props & [output-dir]]
+(defn gen-output [report-name report-data output-props & [columns output-dir]]
   (log/info "Generating output...")
   (case output-props
-    :xlsx (save-xlsx report-name report-data output-dir)
+    :xlsx (save-xlsx report-name report-data columns output-dir)
     (log/error "INVALID OUTPUT TYPE")))

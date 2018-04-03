@@ -35,13 +35,14 @@
             email-server-props (helpers/read-edn (:email-server opts))
             report-props       (helpers/read-report report data-dir)
             output-props       (:output report-props)
+            columns            (:columns report-props)
             dispatch-props-vec (:dispatch report-props)
             report-name        (:name report-props)
             ;; run report
             report-data        (sql/run-report report-props data-dir)]
         (log/info "Report Data: " report-data)
         ;; generate output files
-        (gen-output report-name report-data output-props output-dir)
+        (output/gen-output report-name report-data output-props columns output-dir)
         ;; dispatch report
         (dispatch/dispatch-report dispatch-props-vec report-props email-server-props output-dir)
         (log/info "Done!")))))
