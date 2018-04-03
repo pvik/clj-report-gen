@@ -13,7 +13,7 @@
                  [dk.ative/docjure "1.12.0"] ;; for xlsx spreadsheets
                  [org.clojure/java.jdbc "0.7.5"]
                  ;; db classes
-                 [com.microsoft.sqlserver/mssql-jdbc "6.2.2.jre8"]
+                 [com.microsoft.sqlserver/mssql-jdbc "6.4.0.jre8"]
                  [org.postgresql/postgresql "42.2.2"]
                  ;; mvn install:install-file -Dfile=ojdbc6-12.1.0.1-atlassian-hosted.jar -DgroupId=local -DartifactId=ojdbc6 -Dversion=12.1.0.1 -Dpackaging=jar -DgeneratePom=true
                  [local/ojdbc6 "12.1.0.1"]]
