@@ -20,13 +20,14 @@ Create your report details into an edn file. (Examples are below).
  -r, --report                                Report .edn file
 ```
 
-Sample database and report .edn files are in the resources folder. 
+Sample database and report .edn files are in the resources folder.
 
 The `--data-dir` folder should have `reports` and `databases` folders. Databses defined under the `databases` folder can be referenced in the report's edn file.
 
 ## Examples
 
-```~/report-data/reports/test-report.edn
+```
+;; ~/report-data/reports/test-report.edn
 {:name  "test-report"
  :db    "mssql"
  :query "SELECT * FROM NOTES
@@ -41,7 +42,8 @@ WHERE CREATION_DATE > CONVERT(DATE, DATEADD(DAY, -7, GETDATE()))"
 }
 ```
 
-```~/report-data/databases/mssql.edn
+```
+;; ~/report-data/databases/mssql.edn
 {:dbtype     "mssql"
  :dbname     "DEMO"
  :host       "db1.data.mycomany.local"
