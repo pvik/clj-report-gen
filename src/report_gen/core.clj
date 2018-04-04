@@ -44,5 +44,5 @@
         ;; generate output files
         (output/gen-output report-name report-data output-props columns output-dir)
         ;; dispatch report
-        (dispatch/dispatch-report dispatch-props-vec report-props email-server-props output-dir)
+        (log/info "Dispatching.. " (dispatch/dispatch-report dispatch-props-vec report-props email-server-props output-dir))
         (log/info "Done!")))))
