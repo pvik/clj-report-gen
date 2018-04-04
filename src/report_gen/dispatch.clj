@@ -18,7 +18,8 @@
               {:type :attachment
                :content (java.io.File. report-file-name)}]
         email-msg {:from from :to to :cc cc :bcc bcc :subject subject :body body}]
-    (postal/send-message email-server email-msg)))
+    (postal/send-message email-server email-msg)
+    (log/info "email sent!")))
 
 (defn route-dispatch [dispatch-props report-props email-server & [report-dir]]
   (log/info "dispatch-route " dispatch-props)
