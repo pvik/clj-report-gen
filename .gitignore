@@ -1,7 +1,7 @@
-/target/default
-/target/uberjar/classes
-/target/uberjar/stale
-/target/uberjar/report-gen-0.1.0-SNAPSHOT.jar
+/target
+#/target/uberjar/classes
+#/target/uberjar/stale
+#/target/uberjar/report-gen-0.1.0-SNAPSHOT.jar
 /classes
 /checkouts
 pom.xml
