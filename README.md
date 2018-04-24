@@ -22,7 +22,7 @@ Create your report details into an edn file. (Examples are below).
 
 Sample database and report .edn files are in the resources folder.
 
-The `--data-dir` folder should have `reports` and `databases` folders. Databses defined under the `databases` folder can be referenced in the report's edn file.
+The `--data-dir` folder should have `reports` and `databases` folders. Databses defined under the `databases` folder can be referenced in the report's `.edn` file.
 
 ## Examples
 
@@ -71,5 +71,4 @@ mvn install:install-file -Dfile=ojdbc6-12.1.0.1-atlassian-hosted.jar -DgroupId=l
 
 Copyright © 2018
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
