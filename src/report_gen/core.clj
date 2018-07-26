@@ -48,7 +48,7 @@
             report-data        (sql/run-report report-props data-dir)
             report-count       (count report-data)]
         (log/info "Report Data: " report-data)
-        (if (> report-data 0)
+        (if (> report-count 0)
           (do
             ;; generate output files
             (output/gen-output report-name
