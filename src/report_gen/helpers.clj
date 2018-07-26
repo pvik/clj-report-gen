@@ -22,6 +22,10 @@
     (log/info "reading report file" report-props-file)
     (read-edn report-props-file)))
 
+(defn list-reports [data-dir]
+  (let [dir (clojure.java.io/file (str data-dir "/reports"))]
+    (map #(.getName %) (filter #(not (.isDirectory %)) (file-seq dir)))))
+
 (defn map-vals-to-vec-ord-by-keys [m ks]
   (reduce #(conj % (str (%2 m))) [] ks))
 

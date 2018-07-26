@@ -26,11 +26,19 @@
               :default "resources/email.edn"]
              ["-r" "--report"
               "Report .edn file"]
+             ["-l" "--list"
+              "list all available reports"
+              :default false :flag true]
              ["-v" "--verbose"
               "more verbose output"
-              :default false :flag true])]
+              :default false :flag true]             )]
     (when (:help opts)
       (println banner)
+      (System/exit 0))
+    (when (:list opts)
+      (println banner)
+      (println "Available Reports:")
+      (doall (map println (helpers/list-reports (:data-dir opts))))
       (System/exit 0))
     (if (nil? (:report opts))
       (let []
