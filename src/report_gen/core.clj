@@ -25,7 +25,10 @@
               "email server properties"
               :default "resources/email.edn"]
              ["-r" "--report"
-              "Report .edn file"])]
+              "Report .edn file"]
+             ["-v" "--verbose"
+              "more verbose output"
+              :default false :flag true])]
     (when (:help opts)
       (println banner)
       (System/exit 0))
@@ -47,7 +50,8 @@
             ;; run report
             report-data        (sql/run-report report-props data-dir)
             report-count       (count report-data)]
-        (log/info "Report Data: " report-data)
+        (when (:verbose opts)
+          (log/info "Report Data: " report-data))
         (if (> report-count 0)
           (do
             ;; generate output files
