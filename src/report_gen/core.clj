@@ -61,5 +61,7 @@
                                       report-props
                                       email-server-props
                                       output-dir))
-          (log/info "No records found")
+          (log/info "No records found"))
         (log/info "Done!")))))
+
+
