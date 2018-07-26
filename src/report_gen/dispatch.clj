@@ -19,8 +19,11 @@
                             :content (:body email-props)}
                            {:type :attachment
                             :content (java.io.File. report-file-name)}]
-        email-msg         {:from from :to to :cc cc :bcc bcc :subject subject :body body}]
-    (log/info (postal/send-message email-server email-msg))))
+        email-msg         {:from from :to to :cc cc :bcc bcc :subject subject :body body}
+        postal-response   (if (nil? (:host email-server)) ;; nil email-server use sendmail compatible mta on server
+                            (postal/send-message email-msg)
+                            (postal/send-message email-server email-msg))]
+    (log/info postal-response)))
 
 (defn route-dispatch [dispatch-props report-props email-server & [report-dir]]
   (log/info "dispatch-route " dispatch-props)
